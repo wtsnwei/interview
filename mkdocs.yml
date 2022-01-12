@@ -1,0 +1,22 @@
+site_name: My Docs
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'Blue Grey'
+    accent: 'Pink'
+  feature:
+    tabs: false
+  language: 'zh'
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - '贪心算法': 'Algorithm/greedy.md'
+  - '狄克斯特拉算法': 'Data-structure/Dijkstra.md'
+
