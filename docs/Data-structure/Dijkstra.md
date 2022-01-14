@@ -102,15 +102,14 @@ graph["start"]["b"] = 2
 
 ### 2、COSTS
 
-<p style="color:red">节点的开销指的是从起点出发前往该节点需要多长时间。<p>
+**节点的开销指的是从起点出发前往该节点需要多长时间**。
+
 
 你知道的，从起点到节点B需要2分钟，从起点到节点A需要6分钟（但你可能会找到所需时间更短的路径）。你不知道到终点需要多长时间。对于还不知道的开销，你将其设置为无穷大。在Python中能够表示无穷大吗？你可以这样做：
 
 ```python
 infinity = float("inf")
 ```
-
-
 
 ### 3、parent
 
@@ -130,11 +129,11 @@ processed = []
 
 ![1642085483340](../img/1642085483340.png)
 
-### 数据结构
+**数据结构**
 
 需要三个散列表：`graph`、`costs`、`parents`
 
-#### graph
+##### graph
 
 ```python
 # 起点的邻居
@@ -161,7 +160,7 @@ graph['fin'] = {}
 graph['start'].keys()
 ```
 
-#### costs: 从起点出发，前往该节点需要多长时间
+##### costs: 从起点出发，前往该节点需要多长时间
 
 ```python
 infinity = float('inf')  # 无限大
@@ -171,7 +170,7 @@ costs['b'] = 2
 costs['fin'] = infinity
 ```
 
-#### parents：存储父节点
+##### parents：存储父节点
 
 ```python
 parents = {}
@@ -184,7 +183,7 @@ parents['fin'] = None
 
 
 
-## 代码
+### 5、代码
 
 ```python
 node = find_lowest_cost_node(costs)
