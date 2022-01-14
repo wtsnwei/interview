@@ -13,10 +13,55 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+  - admonition
+  - codehilite:
+      guess_lang: false
+      linenums: false
+  - toc:
+      permalink: true
+  - footnotes
+  - meta
+  - def_list
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.tilde
+
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - '贪心算法': 'Algorithm/greedy.md'
-  - '狄克斯特拉算法': 'Data-structure/Dijkstra.md'
+  - '计算机网络':
+    - 'OSI体系':
+      - '总览': 'Computer-network/osi.md'
+      - '物理层': 'Computer-network/physical.md'
+      - '数据链路层': 'Computer-network/data-link.md'
+      - '网络层': 'Computer-network/network.md'
+      - '传输层': 'Computer-network/transport.md'
+      - '应用层': 'Computer-network/application.md'
+    - '网络状态码': 'Computer-network/status-codes.md'
+  - '操作系统':
+    - '进程和线程': 'OS/processes-threads.md'
+  - '数据结构':
+    - '狄克斯特拉算法': 'Data-structure/Dijkstra.md'
+    - '二叉树、AVL树、B树、B+树': 'Data-structure/B-tree.md'
+  - '算法':
+    - '算法复杂性': 'Algorithm/complexity.md'
+    - '算法改进': 'Algorithm/improve.md'
+    - '贪心算法': 'Algorithm/greedy.md'
+  - '数据库':
+    - '事务': 'Databases/transaction.md'
+    - '索引': 'Databases/indexs.md'
+    - '索引策略及优化': 'Databases/policy-optimize.md'
 
