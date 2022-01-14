@@ -411,29 +411,43 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    一、数据结构
+    问题
   </a>
   
-    <nav class="md-nav" aria-label="一、数据结构">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    解析过程
+  </a>
+  
+    <nav class="md-nav" aria-label="解析过程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#graph" class="md-nav__link">
-    graph
+  <a href="#_3" class="md-nav__link">
+    第一步：找出最便宜的节点。
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#costs" class="md-nav__link">
-    costs: 从起点出发，前往该节点需要多长时间
+  <a href="#b" class="md-nav__link">
+    第二步：计算经节点B前往其各个邻居所需的时间。
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parents" class="md-nav__link">
-    parents：存储父节点
+  <a href="#_4" class="md-nav__link">
+    第三步：重复！
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最后一步—计算最终路径
   </a>
   
 </li>
@@ -444,9 +458,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    二、代码
+  <a href="#_6" class="md-nav__link">
+    代码实现
   </a>
+  
+    <nav class="md-nav" aria-label="代码实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1graph" class="md-nav__link">
+    1、GRAPH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2costs" class="md-nav__link">
+    2、COSTS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -633,29 +667,43 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    一、数据结构
+    问题
   </a>
   
-    <nav class="md-nav" aria-label="一、数据结构">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    解析过程
+  </a>
+  
+    <nav class="md-nav" aria-label="解析过程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#graph" class="md-nav__link">
-    graph
+  <a href="#_3" class="md-nav__link">
+    第一步：找出最便宜的节点。
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#costs" class="md-nav__link">
-    costs: 从起点出发，前往该节点需要多长时间
+  <a href="#b" class="md-nav__link">
+    第二步：计算经节点B前往其各个邻居所需的时间。
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parents" class="md-nav__link">
-    parents：存储父节点
+  <a href="#_4" class="md-nav__link">
+    第三步：重复！
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最后一步—计算最终路径
   </a>
   
 </li>
@@ -666,9 +714,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    二、代码
+  <a href="#_6" class="md-nav__link">
+    代码实现
   </a>
+  
+    <nav class="md-nav" aria-label="代码实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1graph" class="md-nav__link">
+    1、GRAPH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2costs" class="md-nav__link">
+    2、COSTS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -687,9 +755,102 @@
                 
                   <h1>狄克斯特拉算法</h1>
                 
-                <h2 id="_1">一、数据结构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>需要三个散列表：<code>graph</code>、<code>costs</code>、<code>parents</code></p>
-<h3 id="graph">graph<a class="headerlink" href="#graph" title="Permanent link">&para;</a></h3>
+                <h2 id="_1">问题<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>找出从 A 到 B 时间最少的路径？</p>
+<p><img alt="" src="../img/graph.jpg" /></p>
+<p>其中每个数字表示的都是时间，单位为分钟。为找出从起点到终点耗时最短的路径，这里使用**狄克斯特拉算法**。它包含如下四个步骤：</p>
+<ol>
+<li>找出“最便宜”的节点，即可在最短时间内到达的节点</li>
+<li>更新该节点的邻居的开销，其含义将稍后介绍。</li>
+<li>重复这个过程，知道对图中每个节点都这样做了。</li>
+<li>计算最终路径。</li>
+</ol>
+<h2 id="_2">解析过程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">第一步：找出最便宜的节点。<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>你站在起点，不知道该前往节点A还是前往节点B。前往这两个节点都要多长时间呢？</p>
+<p><img alt="1642082587653" src="../img/1642082587653.png" /></p>
+<p>前往节点A需要6分钟，而前往节点B需要2分钟。至于前往其他节点，你还不知道需要多长时间。</p>
+<p>由于你还不知道前往终点需要多长时间，因此你假设为无穷大（这样做的原因你马上就会明白）。节点B是最近的——2分钟就能达到。</p>
+<p><img alt="1642082687347" src="../img/1642082687347.png" /></p>
+<h3 id="b">第二步：计算经节点B前往其各个邻居所需的时间。<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<p>对于节点B的邻居，如果找到前往它的更短路径，就更新其开销。在这里，你找到了：</p>
+<ul>
+<li>
+<p>前往节点A的更短路径（时间从6分钟缩短到5分钟）；</p>
+</li>
+<li>
+<p>前往终点的更短路径（时间从无穷大缩短到7分钟）。</p>
+</li>
+</ul>
+<h3 id="_4">第三步：重复！<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>重复第一步</strong>：找出可在最短时间内前往的节点。你对节点B执行了第二步，除节点B外，可在最短时间内前往的节点是节点A。</p>
+<p><img alt="1642083239764" src="../img/1642083239764.png" /></p>
+<p><strong>重复第二步</strong>：更新节点A的所有邻居的开销</p>
+<p><img alt="1642083798860" src="../img/1642083798860.png" /></p>
+<p>你发现前往终点的时间为6分钟！</p>
+<p>你对每个节点都运行了狄克斯特拉算法（无需对终点这样做）。现在，你知道：</p>
+<ul>
+<li>前往节点B需要2分钟；</li>
+<li>前往节点A需要5分钟；</li>
+<li>前往终点需要6分钟。</li>
+</ul>
+<p><img alt="1642084275557" src="../img/1642084275557.png" /></p>
+<h3 id="_5">最后一步—计算最终路径<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="1642084324980" src="../img/1642084324980.png" /></p>
+<p>更加上面列出的表格，可得知到终点的最小耗时为6，经过的节点有B、A。</p>
+<h2 id="_6">代码实现<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>要编写解决这个问题的代码，需要三个散列表。</p>
+<p><img alt="1642084498133" src="../img/1642084498133.png" />
+<img alt="1642084507292" src="../img/1642084507292.png" /></p>
+<p>随着算法的进行，你将不断更新散列表 costs 和 parents。</p>
+<h3 id="1graph">1、GRAPH<a class="headerlink" href="#1graph" title="Permanent link">&para;</a></h3>
+<p>首先，需要实现这个图，为此可使用一个散列表。</p>
+<div class="highlight"><pre><span></span><code><span class="n">graph</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div>
+<p>这里需要同时存储邻居和前往邻居的开销。例如，起点有两个邻居——A和B。</p>
+<p><img alt="1642084707916" src="../img/1642084707916.png" /></p>
+<p>如何表示这些边的权重呢？为何不使用另一个散列表呢？</p>
+<div class="highlight"><pre><span></span><code><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">graph</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">][</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">graph</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">][</span><span class="s2">&quot;b&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>
+<p><img alt="1642084748555" src="../img/1642084748555.png" /></p>
+<p>表示整个图的散列表类似于下面这样。</p>
+<p><img alt="1642084952417" src="../img/1642084952417.png" /></p>
+<p>接下来，需要用一个散列表来存储每个节点的开销。</p>
+<h3 id="2costs">2、COSTS<a class="headerlink" href="#2costs" title="Permanent link">&para;</a></h3>
+<p style="color:red">节点的开销指的是从起点出发前往该节点需要多长时间。<p>
+
+你知道的，从起点到节点B需要2分钟，从起点到节点A需要6分钟（但你可能会找到所需时间更短的路径）。你不知道到终点需要多长时间。对于还不知道的开销，你将其设置为无穷大。在Python中能够表示无穷大吗？你可以这样做：
+
+<div class="highlight"><pre><span></span><code><span class="n">infinity</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+### 3、parent
+
+还需要一个存储父节点的散列表：
+
+![1642085380543](../img/1642085380543.png)
+
+最后，你需要一个数组，用于记录处理过的节点，因为对于同一个节点，你不用处理多次。
+
+<div class="highlight"><pre><span></span><code><span class="n">processed</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div>
+
+
+
+### 4、算法
+
+![1642085483340](../img/1642085483340.png)
+
+### 数据结构
+
+需要三个散列表：`graph`、`costs`、`parents`
+
+#### graph
+
 <div class="highlight"><pre><span></span><code><span class="c1"># 起点的邻居</span>
 <span class="n">graph</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">graph</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">][</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
@@ -707,24 +868,35 @@
 <span class="c1"># 终点没有任何邻居</span>
 <span class="n">graph</span><span class="p">[</span><span class="s1">&#39;fin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div>
-<p>因此 <code>graph[start]</code> 是一个散列表，起点的邻居可以这样获取：</p>
+
+因此 `graph[start]` 是一个散列表，起点的邻居可以这样获取：
+
 <div class="highlight"><pre><span></span><code><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="costs">costs: 从起点出发，前往该节点需要多长时间<a class="headerlink" href="#costs" title="Permanent link">&para;</a></h3>
+
+#### costs: 从起点出发，前往该节点需要多长时间
+
 <div class="highlight"><pre><span></span><code><span class="n">infinity</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>  <span class="c1"># 无限大</span>
 <span class="n">costs</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">costs</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">costs</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">costs</span><span class="p">[</span><span class="s1">&#39;fin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">infinity</span>
 </code></pre></div>
-<h3 id="parents">parents：存储父节点<a class="headerlink" href="#parents" title="Permanent link">&para;</a></h3>
+
+#### parents：存储父节点
+
 <div class="highlight"><pre><span></span><code><span class="n">parents</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">parents</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;start&#39;</span>
 <span class="n">parents</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;start&#39;</span>
 <span class="n">parents</span><span class="p">[</span><span class="s1">&#39;fin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
-<p>最后，还需要一个数组，用于记录处理过的节点。</p>
-<h2 id="_2">二、代码<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+
+最后，还需要一个数组，用于记录处理过的节点。
+
+
+
+## 代码
+
 <div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="o">=</span> <span class="n">find_lowest_cost_node</span><span class="p">(</span><span class="n">costs</span><span class="p">)</span>
 <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">costs</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
@@ -738,7 +910,9 @@
     <span class="n">processed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="n">node</span> <span class="o">=</span> <span class="n">find_lowest_cost_node</span><span class="p">(</span><span class="n">costs</span><span class="p">)</span>
 </code></pre></div>
-<p>查找花销最小的节点</p>
+
+查找花销最小的节点
+
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">find_lowest_cost_node</span><span class="p">(</span><span class="n">costs</span><span class="p">):</span>
     <span class="n">lowest_cost</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
     <span class="n">lowest_cost_node</span> <span class="o">=</span> <span class="kc">None</span>
