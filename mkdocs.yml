@@ -60,6 +60,8 @@ nav:
     - '算法复杂性': 'Algorithm/complexity.md'
     - '算法改进': 'Algorithm/improve.md'
     - '贪心算法': 'Algorithm/greedy.md'
+    - '分而治之': 'Algorithm/quicksort.md'
+    - '动态规划': 'Algorithm/dynamic-programming.md'
     - '狄克斯特拉算法': 'Data-structure/Dijkstra.md'
     - '最小生成树—prim算法': 'Data-structure/prim.md'
     - '排序':
