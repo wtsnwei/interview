@@ -56,6 +56,7 @@ nav:
   - '数据结构':
     - '狄克斯特拉算法': 'Data-structure/Dijkstra.md'
     - '二叉树、AVL树、B树、B+树': 'Data-structure/B-tree.md'
+    - 'Huffman编码树': 'Data-structure/Huffman.md'
   - '算法':
     - '算法复杂性': 'Algorithm/complexity.md'
     - '算法改进': 'Algorithm/improve.md'
