@@ -24,7 +24,16 @@
 
 #### 步骤6
 
-对集合 V-U 中所有的顶点 j，更新其 lowcost[] 和 closest[]。更新公式：$if (C[t][j]<lowcost[j])\ \{lowcost[j]=C[t][j];\ closest[j]=t;\}$，转步骤3。
+对集合 V-U 中所有的顶点 j，更新其 lowcost[] 和 closest[]。更新公式：
+
+```
+if (C[t][j] < lowcost[j]) {
+	lowcost[j] = C[t][j];
+	closest[j] = t;
+}
+```
+
+然后转步骤3。
 
 
 
